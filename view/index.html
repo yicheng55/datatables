@@ -29,9 +29,10 @@
                 <thead>
                     <tr>
 
-                        <th>ZipCode</th>
+                        <th>_ID</th>
                         <th>City</th>
                         <th>Population</th>
+                        <th>State</th>
                         <th>State</th>
 
                     </tr>
@@ -40,9 +41,10 @@
                 <tfoot>
                     <tr>
 
-                        <th>ZipCode</th>
+                        <th>_ID</th>
                         <th>City</th>
                         <th>Population</th>
+                        <th>State</th>
                         <th>State</th>
                     </tr>
                 </tfoot>
@@ -53,10 +55,45 @@
 
 </body>
 <script>
+    // $(document).ready(function() {
+    //     var data = [{
+    //         "name": "Tiger Nixon",
+    //         "position": "System Architect",
+    //         "salary": "$3,120",
+    //         "start_date": "2011/04/25",
+
+    //     }, {
+    //         "name": "Garrett Winters",
+    //         "position": "Director",
+    //         "salary": "$5,300",
+    //         "start_date": "2011/07/25",
+
+    //     }];
+
+    //     $('#ZipcodesTable').DataTable({
+    //         "data": data,
+    //         "columns": [ //列的標題一般是從DOM中讀取（也可以使用這個屬性為表格創建列標題)
+    //             {
+    //                 data: 'name',
+    //                 title: "姓名"
+    //             }, {
+    //                 data: 'position',
+    //                 title: "職位"
+    //             }, {
+    //                 data: 'salary',
+    //                 title: "薪資"
+    //             }, {
+    //                 data: 'start_date',
+    //                 title: "開始工作日"
+    //             },
+    //         ]
+    //     })
+    // });
+
 
     //$.fn.poshytip = { defaults: null };
     //$.fn.editable.defaults.mode = 'inline';
-    $(document).ready(function () {
+    $(document).ready(function() {
         var t = $('#ZipcodesTable').DataTable({
             "paging": true,
             "pageLength": 10,
@@ -66,20 +103,43 @@
                 'type': 'POST',
                 'url': '/populateZipCodes'
             },
-            'columns':
-                [
-                { 'data': '_id', "defaultContent": "", 'name': 'ZipCode' },
-                { 'data': 'city', "defaultContent": "", 'name': 'City' },
-                { 'data': 'pop', "defaultContent": "", 'name': 'Population' },
-                { 'data': 'state', "defaultContent": "N", 'name': 'State' }
-                ],
-            "columnDefs": [
-                {
-                    "searchable": false,
-                    "orderable": false,
-                    "targets": 0
+            'columns': [{
+                'data': '_id',
+                'name': '_ID',
+                // "defaultContent": ""
+                'render': function(data, type, row) {
+                    console.log('data = ' + data);
+                    return '<a href="" target="_blank">' + data + '</a>' // 這邊是加連結
                 }
-            ]
+
+            }, {
+                'data': 'city',
+                "defaultContent": "",
+                'name': 'City'
+            }, {
+                'data': 'pop',
+                "defaultContent": "",
+                'name': 'Population'
+            }, {
+                'data': 'state',
+                "defaultContent": "N",
+                'name': 'State'
+            }, {
+                'data': null,
+                'title': "操作功能", // 這邊是欄位
+                'render': function(data, type, row) {
+                        return '<button type="button" class="btn btn-warning btn-sm">編輯</button> ' +
+                            '<button type="button" class="btn btn-danger btn-sm">刪除</button>'
+                    }
+                    // 'data': null,
+                    // "defaultContent": "",
+                    // 'title': '操作功能'
+            }],
+            "columnDefs": [{
+                "searchable": false,
+                "orderable": false,
+                "targets": 0
+            }]
 
         });
 

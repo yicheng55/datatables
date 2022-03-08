@@ -1,7 +1,7 @@
 var zipcodesModel = require("../model/ZipCodes");
 
 exports.getZipCodes = function(req, res) {
-    console.log(req.body);
+    // console.log(req.body);
     var searchStr = req.body.search.value;
     if (req.body.search.value) {
         var regex = new RegExp(req.body.search.value, "i");
@@ -42,6 +42,7 @@ exports.getZipCodes = function(req, res) {
                         data: results,
                     });
                     res.send(data);
+                    console.log(data);
                 }
             );
 
