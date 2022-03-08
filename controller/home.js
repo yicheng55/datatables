@@ -1,6 +1,6 @@
 var zipcodesModel = require("../model/ZipCodes");
 
-exports.getZipCodes = function (req, res) {
+exports.getZipCodes = function(req, res) {
     console.log(req.body);
     var searchStr = req.body.search.value;
     if (req.body.search.value) {
@@ -17,19 +17,19 @@ exports.getZipCodes = function (req, res) {
     //     console.log('results = ' + results);
     // });
 
-    zipcodesModel.count({}, function (err, c) {
+    zipcodesModel.count({}, function(err, c) {
         recordsTotal = c;
+        console.log('recordsTotal = ' + c);
         // console.log(c);
-        zipcodesModel.count(searchStr, function (err, c) {
+        zipcodesModel.count(searchStr, function(err, c) {
             recordsFiltered = c;
             console.log('recordsTotal = ' + c);
             console.log('start= ' + req.body.start);
             console.log('length= ' + req.body.length);
             zipcodesModel.find(
                 searchStr,
-                "_id city pop state",
-                { skip: Number(req.body.start), limit: Number(req.body.length) },
-                function (err, results) {
+                "_id city pop state", { skip: Number(req.body.start), limit: Number(req.body.length) },
+                function(err, results) {
                     if (err) {
                         console.log("error while getting results" + err);
                         return;
