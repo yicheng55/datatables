@@ -19,12 +19,12 @@ exports.getZipCodes = function (req, res) {
 
     zipcodesModel.count({}, function (err, c) {
         recordsTotal = c;
-        console.log(c);
+        // console.log(c);
         zipcodesModel.count(searchStr, function (err, c) {
             recordsFiltered = c;
-            console.log(c);
-            console.log(req.body.start);
-            console.log(req.body.length);
+            console.log('recordsTotal = ' + c);
+            console.log('start= ' + req.body.start);
+            console.log('length= ' + req.body.length);
             zipcodesModel.find(
                 searchStr,
                 "_id city pop state",
