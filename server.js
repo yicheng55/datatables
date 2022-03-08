@@ -11,7 +11,9 @@ dotenv.load();
 
 //connect to the mongodb database .URI for which is in the env file
 
-mongoose.connect(process.env.DB_URI);
+mongoose.connect("mongodb://localhost:27017/liveSearch").then(() => console.log("connected to db"));
+// mongoose.connect("mongodb://localhost:27017/country").then(() => console.log("connected to db"));
+// mongoose.connect(process.env.DB_URI);
 
 mongoose.connection.on('error', function(err) {
   console.log('MongoDB Connection Error. Please make sure that MongoDB is running.'+err);

@@ -18,6 +18,7 @@ var ZipCodesSchema = new mongoose.Schema({
   state:String,
 }, schemaOptions);
 
-
-var ZipCodes = mongoose.model('ZipCodes', ZipCodesSchema);
+// var ZipCodes = mongoose.model('test002', ZipCodesSchema);
+// var ZipCodes = mongoose.model('ZipCodes', ZipCodesSchema);
+var ZipCodes = mongoose.model('test001', ZipCodesSchema);
 module.exports = ZipCodes;
