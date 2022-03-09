@@ -124,11 +124,14 @@
                 "defaultContent": "N",
                 'name': 'State'
             }, {
-                'data': null,
+                'data': '_id',
                 'title': "操作功能", // 這邊是欄位
                 'render': function(data, type, row) {
-                        return '<button type="button" class="btn btn-warning btn-sm">編輯</button> ' +
-                            '<button type="button" class="btn btn-danger btn-sm">刪除</button>'
+                        let str = `<button type="button" class="btn btn-warning btn-sm" onclick="editFunction('${data}')">編輯</button> ` +
+                            `<button type="button" class="btn btn-danger btn-sm" onclick="delFunction('${data}')">刪除</button>`
+                            // console.log('data = ' + data);
+                        console.log(`str = ` + str);
+                        return str;
                     }
                     // 'data': null,
                     // "defaultContent": "",
@@ -165,6 +168,16 @@
 
         // $('#ZipcodesTable').DataTable();
     });
+
+    function editFunction(val) {
+        console.log('editfun data = ' + val);
+        // document.getElementById("demo").style.color = "red";
+    }
+
+    function delFunction(val) {
+        console.log('delfun data = ' + val);
+        // document.getElementById("demo").style.color = "red";
+    }
 </script>
 
 </html>
