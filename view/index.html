@@ -29,7 +29,7 @@
                 <thead>
                     <tr>
 
-                        <th>_ID</th>
+                        <th>ID</th>
                         <th>City</th>
                         <th>Population</th>
                         <th>State</th>
@@ -38,16 +38,16 @@
                     </tr>
                 </thead>
                 <tbody></tbody>
-                <tfoot>
+                <!-- <tfoot>
                     <tr>
 
-                        <th>_ID</th>
+                        <th>ID</th>
                         <th>City</th>
                         <th>Population</th>
                         <th>State</th>
                         <th>State</th>
                     </tr>
-                </tfoot>
+                </tfoot> -->
             </table>
         </div>
     </div>
@@ -105,23 +105,22 @@
             },
             'columns': [{
                 'data': '_id',
-                'name': '_ID',
+                'name': 'ID',
                 // "defaultContent": ""
                 'render': function(data, type, row) {
-                    console.log('data = ' + data);
-                    return '<a href="" target="_blank">' + data + '</a>' // 這邊是加連結
+                    // console.log('data = ' + data);
+                    return '<a href="#" target="_blank">' + data + '</a>' // 這邊是加連結
                 }
-
             }, {
-                'data': 'city',
+                'data': 'Action',
                 "defaultContent": "",
                 'name': 'City'
             }, {
-                'data': 'pop',
+                'data': 'Locale',
                 "defaultContent": "",
                 'name': 'Population'
             }, {
-                'data': 'state',
+                'data': 'EPC',
                 "defaultContent": "N",
                 'name': 'State'
             }, {
@@ -152,16 +151,16 @@
                     cell.innerHTML = i + 1;
                 }
             );
-        });
+            });
         */
         //paging
         /* $('#next').on('click', function () {
             t.page('next').draw('page');
-        });
+            });
 
-        $('#previous').on('click', function () {
-            t.page('previous').draw('page');
-        });
+            $('#previous').on('click', function () {
+                t.page('previous').draw('page');
+            });
         */
 
         // $('#ZipcodesTable').DataTable();

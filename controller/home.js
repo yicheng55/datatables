@@ -5,14 +5,14 @@ exports.getZipCodes = function(req, res) {
     var searchStr = req.body.search.value;
     if (req.body.search.value) {
         var regex = new RegExp(req.body.search.value, "i");
-        searchStr = { $or: [{ _id: regex }, { city: regex }, { state: regex }] };
+        searchStr = { $or: [{ _id: regex }, { Locale: regex }, { EPC: regex }] };
     } else {
         searchStr = {};
     }
 
     var recordsTotal = 0;
     var recordsFiltered = 0;
-
+    console.log('searchStr = ' + JSON.stringify(searchStr));
     // zipcodesModel.find(function (err, results) {
     //     console.log('results = ' + results);
     // });
@@ -28,7 +28,7 @@ exports.getZipCodes = function(req, res) {
             console.log('length= ' + req.body.length);
             zipcodesModel.find(
                 searchStr,
-                "_id city pop state", { skip: Number(req.body.start), limit: Number(req.body.length) },
+                "_id Action Locale EPC", { skip: Number(req.body.start), limit: Number(req.body.length) },
                 function(err, results) {
                     if (err) {
                         console.log("error while getting results" + err);
